@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Online Compiler</title>
+    <link rel="icon" href="Logo.webp">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Code Editor Section -->
+        <div class="editor" id="editor-container">  
+            <div class="button-container">
+                <div>
+                <abbr title="Theme"><button id="theme-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></button></abbr>
+                <abbr title="Clear Code"><button id="clr" onclick="reload()"><i class="fa-solid fa-trash"></i></button></abbr>
+            </div>
+            <h2>Code Editor</h2>
+                <div class="opt-btn">
+                    <abbr title="Run as Live"><button id="go-live" onclick="startLive()">Go Live</button></abbr>
+                    <abbr title="Stop Live"><button id="stop-live" onclick="stopLive()" style="display:none;">Stop live</button></abbr>
+                   <abbr title="Run Program"><button id="run-code" onclick="compileCode()"><i class="fa-solid fa-play"></i></button></abbr> 
+                   <abbr title="Save File"><button id="save-files" onclick="saveFiles()"><i class="fa-solid fa-download"></i></button></abbr>
+                </div>
+            </div>
+            <div class="tabs">
+                <button class="tab-button active" onclick="openTab('html')">HTML</button>
+                <button class="tab-button" onclick="openTab('css')">CSS</button>
+                <button class="tab-button" onclick="openTab('js')">JavaScript</button>
+            </div>
+            
+            <!-- HTML Code Section -->
+            <div id="html" class="tab-content">
+                <textarea id="html-input" placeholder="Write your HTML code here..." oninput="autoCompile()" class="bg-html"></textarea>
+            </div>
+            
+            <!-- CSS Code Section -->
+            <div id="css" class="tab-content" style="display:none;">
+                <textarea id="css-input" placeholder="Write your CSS code here..." oninput="autoCompile()" class="bg-css"></textarea>
+            </div>
+            
+            <!-- JavaScript Code Section -->
+            <div id="js" class="tab-content" style="display:none;">
+                <textarea id="js-input" placeholder="Write your JavaScript code here..." oninput="autoCompile()" class="bg-js"></textarea>
+            </div>
+        </div>
+
+        <!-- Output Section -->
+        <div class="output" id="output-container">
+            <div class="output-header">
+                <h2 id="output-text">Output</h2>
+                <h2 class="title" id="title-text">Hello World!</h2>
+                <div class="output-buttons">
+                    <button class="maxmin" onclick="mobile()">Mobile View</button>
+                    <button class="maxmin" onclick="tablet()">Tablet View</button>
+                    <button class="maxmin" onclick="toggleOutputSize()">Desktop View</button>
+                </div>
+            </div>
+            <iframe id="output-frame"></iframe>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    
+</body>
+</html>
